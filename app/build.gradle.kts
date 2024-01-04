@@ -52,7 +52,8 @@ android {
 }
 
 dependencies {
-
+    implementation ("androidx.compose.material:material:1.5.4")
+    implementation ("androidx.navigation:navigation-compose:2.7.6")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
