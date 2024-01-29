@@ -5,6 +5,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.drugsproject.MusicPlayer.MusicPlayerComposable
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {
@@ -16,10 +18,13 @@ fun BottomNavGraph(navController: NavHostController) {
             HomeScreen()
         }
         composable(route = BottomBarScreen.Other.route) {
-            OtherScreen()
+            OtherScreen(navController)
         }
         composable(route = BottomBarScreen.HabitTracker.route) {
             NonSmokingHabitApp()
+        }
+        composable(route = "music") {
+            MusicPlayerComposable()
         }
     }
 }

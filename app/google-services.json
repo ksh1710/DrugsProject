@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "257539494529",
+    "project_id": "drugsproject-477b8",
+    "storage_bucket": "drugsproject-477b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257539494529:android:69b012931713a162abb380",
+        "android_client_info": {
+          "package_name": "com.example.drugsproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNUfJffOSb7lp1Y5afYxdoPeoapMBS_7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

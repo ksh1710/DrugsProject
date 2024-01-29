@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,14 +30,28 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.drugsproject.MusicPlayer.MusicPlayerComposable
 import com.example.drugsproject.ui.theme.DrugsProjectTheme
+import com.google.firebase.FirebaseApp
+//import com.example.drugsproject.viewmodels.TrackViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+//@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+//    val viewModel:TrackViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        observeViewModel()
+    FirebaseApp.initializeApp(this)
         setContent {
             DrugsProjectTheme {
-                // A surface container using the 'background' color from the theme
+
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -47,6 +62,12 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+//    private fun observeViewModel(){
+//        viewModel.trackList.observe(this,{  trackList->
+//
+//        })
+//    }
 }
 
 

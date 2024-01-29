@@ -1,6 +1,12 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
+    id ("com.google.devtools.ksp") version "1.9.20-1.0.14"
+    id ("com.google.dagger.hilt.android") version "2.44" apply false
+
+    // Depends on your kotlin version
+
 }
 
 android {
@@ -51,10 +57,27 @@ android {
     }
 }
 
+kotlin {
+    sourceSets {
+        debug {
+            kotlin.srcDir("build/generated/ksp/debug/kotlin")
+        }
+        release {
+            kotlin.srcDir("build/generated/ksp/release/kotlin")
+        }
+    }
+}
+
 dependencies {
+    implementation("io.coil-kt:coil-compose:2.5.0")
+    implementation("com.google.dagger:hilt-android:2.44")
+//    implementation("io.github.raamcosta.compose-destinations:core:1.4.2-beta")
+    implementation(platform("androidx.compose:compose-bom:2023.08.00"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
+    ksp("io.github.raamcosta.compose-destinations:ksp:1.4.2-beta")
     implementation("androidx.compose.ui:ui-text-google-fonts:1.5.4")
-    implementation ("androidx.compose.material:material:1.5.4")
-    implementation ("androidx.navigation:navigation-compose:2.7.6")
+    implementation("androidx.compose.material:material:1.5.4")
+    implementation("androidx.navigation:navigation-compose:2.7.6")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
@@ -64,6 +87,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("com.google.firebase:firebase-firestore:24.10.1")
+    implementation("com.google.firebase:firebase-storage:20.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

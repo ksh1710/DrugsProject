@@ -23,16 +23,24 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.drugsproject.MusicPlayer.MusicPlayerComposable
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-    Scaffold(bottomBar = { BottomBar(navController = navController)}) {
+//    val navController2 = rememberNavController()
+    Scaffold(bottomBar = { BottomBar(navController = navController) }) {
         BottomNavGraph(navController = navController)
     }
+//    NavHost(navController = navController, startDestination = "test") {
+//        composable("test"){ OtherScreen(navController)}
+//        composable("music"){ MusicPlayerComposable()}
+//    }
 }
 
 
@@ -46,7 +54,9 @@ fun BottomBar(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     NavigationBar(
-        modifier = Modifier.height(60.dp).background(Color.DarkGray),
+        modifier = Modifier
+            .height(60.dp)
+            .background(Color.DarkGray),
         tonalElevation = 100.dp
     ) {
         screens.forEach { screen ->
@@ -63,7 +73,7 @@ fun BottomBar(navController: NavHostController) {
 fun RowScope.AddItem(
     screen: BottomBarScreen,
     currentDestination: NavDestination?,
-    navController: NavHostController
+    navController: NavHostController,
 ) {
     BottomNavigationItem(
         label = {
@@ -81,9 +91,9 @@ fun RowScope.AddItem(
         selectedContentColor = Color.Yellow,
         unselectedContentColor = Color.Black,
         onClick = {
-            navController.navigate(screen.route){
+            navController.navigate(screen.route) {
                 popUpTo(navController.graph.findStartDestination().id)
-                launchSingleTop =true
+                launchSingleTop = true
             }
         }
     )
